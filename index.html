@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nandani Medical Tourism — Artemis Hospitals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Light, professional palette */
+  --white:      #ffffff;
+  --bg:         #ffffff;
+  --bg-alt:     #f4f7fb;
+  --bg-section: #eaf0f8;
+  --navy:       #002d72;
+  --navy-dark:  #121d31;
+  --navy-mid:   #0a4fa8;
+  --blue:       #1566c8;
+  --blue-light: #2e86de;
+  --teal:       #0891b2;
+  --text:       #0f1c3f;
+  --text2:      #3d5270;
+  --text3:      #7a8faa;
+  --border:     #d8e3f0;
+  --border-light: #eaf0f8;
+  --shadow-sm:  0 2px 8px rgba(0,45,114,0.07);
+  --shadow-md:  0 6px 24px rgba(0,45,114,0.1);
+  --shadow-lg:  0 16px 48px rgba(0,45,114,0.13);
+  --grad:       linear-gradient(135deg, #002d72 0%, #1566c8 100%);
+  --grad-accent:linear-gradient(135deg, #0a4fa8 0%, #2e86de 100%);
+  --radius:     12px;
+  --ff-head:    'Playfair Display', 'Noto Serif', Georgia, serif;
+  --ff-body:    'Noto Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 18px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ─── UTILITY ─────────────────────────────── */
+.grad-text {
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--grad);
+  color: #fff;
+  font-family: var(--ff-body); font-weight: 600; font-size: .95rem;
+  padding: 14px 32px; border-radius: 6px; border: none;
+  cursor: pointer; text-decoration: none;
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+  box-shadow: 0 4px 16px rgba(0,45,114,0.28);
+  letter-spacing: .01em;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,45,114,0.38); opacity: .95; }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent;
+  color: var(--navy);
+  font-family: var(--ff-body); font-weight: 600; font-size: .95rem;
+  padding: 13px 30px; border-radius: 6px;
+  border: 2px solid var(--navy);
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, color .2s, transform .2s;
+}
+.btn-ghost:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+
+.section-label {
+  font-family: var(--ff-body); font-weight: 700; font-size: .74rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 12px; display: block;
+}
+.section-title {
+  font-family: var(--ff-head); font-size: clamp(1.8rem, 4vw, 2.75rem);
+  font-weight: 700; line-height: 1.22; color: var(--navy);
+}
+.section-sub {
+  color: var(--text2); font-size: 1.05rem;
+  max-width: 600px; margin: 16px auto 0; line-height: 1.75;
+}
+
+/* ─── NAVBAR ──────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 82px;
+  background: var(--navy-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background .3s, box-shadow .3s;
+}
+nav.scrolled { box-shadow: 0 4px 20px rgba(0,26,80,0.35); }
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 62px; width: auto; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.78); font-size: .88rem; font-weight: 500;
+  text-decoration: none; letter-spacing: .02em;
+  transition: color .2s; padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.5); }
+
+.lang-toggle {
+  display: flex; align-items: center;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 6px; padding: 3px;
+}
+.lang-btn {
+  padding: 5px 14px; border-radius: 4px; border: none;
+  font-family: var(--ff-body); font-size: .8rem; font-weight: 700;
+  cursor: pointer; transition: all .2s; letter-spacing: .05em;
+  background: transparent; color: rgba(255,255,255,0.6);
+}
+.lang-btn.active { background: #fff; color: var(--navy); }
+
+.nav-cta-wrap { display: flex; align-items: center; gap: 16px; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; transition: .3s; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-cta-wrap .btn-primary { display: none; }
+}
+
+/* ─── HERO ────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 5vw 100px;
+  position: relative; overflow: hidden;
+  background: var(--white);
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 100% 50%, rgba(21,102,200,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 0% 80%, rgba(0,45,114,0.05) 0%, transparent 55%),
+    var(--white);
+}
+.hero-mesh {
+  position: absolute; inset: 0; z-index: 0; opacity: 1;
+  background-image:
+    linear-gradient(rgba(0,45,114,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,45,114,0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.hero-content { position: relative; z-index: 1; max-width: 660px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #eef4ff; border: 1px solid #c5d8f5;
+  border-radius: 4px; padding: 6px 16px;
+  font-size: .78rem; font-weight: 700; color: var(--navy-mid);
+  margin-bottom: 28px; letter-spacing: .07em; text-transform: uppercase;
+}
+.hero-badge svg { width: 13px; height: 13px; }
+.hero h1 {
+  font-family: var(--ff-head);
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 700; line-height: 1.13;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.hero h1 em { font-style: italic; color: var(--blue); }
+.hero-sub {
+  font-size: clamp(.98rem, 1.8vw, 1.12rem);
+  color: var(--text2); margin: 22px 0 38px;
+  max-width: 540px; line-height: 1.75;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.hero-visual {
+  position: absolute; right: 5vw; top: 50%;
+  transform: translateY(-50%);
+  width: min(400px, 36vw); z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+@media (max-width: 900px) { .hero-visual { display: none; } }
+
+.hero-stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-md);
+  animation: floatCard 4s ease-in-out infinite;
+}
+.hero-stat-card:nth-child(2) { animation-delay: 1s; margin-top: 28px; }
+.hero-stat-card:nth-child(3) { animation-delay: .5s; }
+.hero-stat-card:nth-child(4) { animation-delay: 1.5s; margin-top: 28px; }
+@keyframes floatCard {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+.hero-stat-card .num {
+  font-family: var(--ff-head); font-size: 2.2rem; font-weight: 700;
+  color: var(--navy); line-height: 1;
+}
+.hero-stat-card .lbl { font-size: .82rem; color: var(--text3); margin-top: 6px; font-weight: 500; }
+
+/* ─── ACCREDITATION BAR ───────────────────── */
+.accred-bar {
+  background: var(--navy);
+  padding: 20px 5vw;
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(16px, 4vw, 56px); flex-wrap: wrap;
+}
+.accred-item {
+  display: flex; align-items: center; gap: 9px;
+  color: rgba(255,255,255,0.82); font-size: .82rem; font-weight: 500;
+  white-space: nowrap;
+}
+.accred-item svg { color: #7fc4ff; flex-shrink: 0; }
+.accred-divider { width: 1px; height: 24px; background: rgba(255,255,255,0.18); }
+@media (max-width: 600px) { .accred-divider { display: none; } }
+
+/* ─── STATS ───────────────────────────────── */
+.stats { padding: 100px 5vw; text-align: center; background: var(--bg-alt); }
+.stats-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+  gap: 1px; max-width: 920px; margin: 48px auto 0;
+  background: var(--border); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow-sm);
+}
+.stat-item {
+  background: var(--white); padding: 52px 28px;
+  transition: background .2s;
+}
+.stat-item:hover { background: #f0f5ff; }
+.stat-num {
+  font-family: var(--ff-head); font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700; line-height: 1; color: var(--navy);
+}
+.stat-lbl { font-size: .82rem; color: var(--text3); margin-top: 8px; font-weight: 500; }
+
+/* ─── WHY US ──────────────────────────────── */
+.why { padding: 110px 5vw; background: var(--white); }
+.why-inner { max-width: 1200px; margin: 0 auto; }
+.why-header { text-align: center; margin-bottom: 60px; }
+.why-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 24px;
+}
+.why-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 34px;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  position: relative; overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.why-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--grad);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: #c0d4f0; }
+.why-card:hover::before { transform: scaleX(1); }
+.why-icon {
+  width: 62px; height: 62px; border-radius: 14px;
+  background: #eef4ff; border: 1px solid #c5d8f5;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px;
+}
+.why-icon svg { width: 28px; height: 28px; color: var(--navy-mid); }
+.why-step {
+  font-size: .7rem; font-weight: 700; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 8px;
+}
+.why-card h3 { font-family: var(--ff-head); font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+.why-card p { color: var(--text2); font-size: .9rem; line-height: 1.72; }
+
+/* ─── SERVICES ────────────────────────────── */
+.services { padding: 110px 5vw; background: var(--bg-alt); }
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-header { text-align: center; margin-bottom: 56px; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 20px;
+}
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 30px;
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; gap: 12px;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+  cursor: default;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: #aac6ee;
+  box-shadow: var(--shadow-md);
+}
+.service-icon {
+  width: 54px; height: 54px; border-radius: 12px;
+  background: #eef4ff;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid #c5d8f5;
+}
+.service-icon svg { width: 26px; height: 26px; color: var(--navy-mid); }
+.service-card h3 { font-family: var(--ff-head); font-size: 1.02rem; font-weight: 700; color: var(--navy); }
+.service-card p { font-size: .83rem; color: var(--text3); line-height: 1.65; }
+.service-link {
+  margin-top: auto; font-size: .81rem; font-weight: 700;
+  color: var(--blue); text-decoration: none;
+  display: flex; align-items: center; gap: 4px;
+  transition: gap .2s, color .2s;
+}
+.service-link:hover { gap: 8px; color: var(--navy); }
+
+/* ─── HOW IT WORKS ────────────────────────── */
+.how { padding: 110px 5vw; background: var(--white); }
+.how-inner { max-width: 1100px; margin: 0 auto; }
+.how-header { text-align: center; margin-bottom: 64px; }
+.how-steps {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 0; position: relative;
+}
+.how-steps::before {
+  content: '';
+  position: absolute; top: 41px; left: 10%; right: 10%; height: 2px;
+  background: var(--border);
+}
+@media (max-width: 700px) { .how-steps::before { display: none; } }
+.how-step { text-align: center; padding: 0 16px; position: relative; }
+.step-num {
+  width: 82px; height: 82px; border-radius: 50%;
+  background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px;
+  font-family: var(--ff-head); font-size: 1.6rem; font-weight: 700; color: #fff;
+  box-shadow: 0 0 0 7px #e8f0fb, var(--shadow-md);
+  position: relative; z-index: 1;
+}
+.how-step h3 {
+  font-family: var(--ff-head); font-size: 1.05rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 10px;
+}
+.how-step p { font-size: .84rem; color: var(--text2); line-height: 1.65; }
+
+/* ─── TESTIMONIALS ────────────────────────── */
+.testimonials { padding: 110px 5vw; background: var(--bg-alt); }
+.test-inner { max-width: 1200px; margin: 0 auto; }
+.test-header { text-align: center; margin-bottom: 56px; }
+.test-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  gap: 24px;
+}
+.test-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px 40px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s, box-shadow .25s;
+}
+.test-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.test-card::before {
+  content: '\201C';
+  position: absolute; top: 14px; left: 28px;
+  font-family: var(--ff-head); font-size: 5rem; line-height: 1;
+  color: var(--border); opacity: .8;
+}
+.stars { color: #e09800; font-size: .88rem; margin-bottom: 16px; letter-spacing: 2px; }
+.test-text { font-size: .92rem; color: var(--text2); line-height: 1.78; margin-bottom: 24px; font-style: italic; }
+.test-author { display: flex; align-items: center; gap: 14px; }
+.test-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-head); font-size: 1.1rem; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.test-name { font-weight: 700; font-size: .9rem; color: var(--navy); }
+.test-city { font-size: .78rem; color: var(--text3); }
+
+/* ─── CONTACT ─────────────────────────────── */
+.contact { padding: 110px 5vw; background: var(--navy-dark); }
+.contact-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+}
+@media (max-width: 820px) { .contact-inner { grid-template-columns: 1fr; } }
+.contact-info .section-label { color: #7fc4ff; }
+.contact-info h2 { font-family: var(--ff-head); font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 700; margin-bottom: 16px; color: #fff; }
+.contact-info p { color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.78; margin-bottom: 32px; }
+.contact-detail {
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-bottom: 20px;
+}
+.contact-detail-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.contact-detail-icon svg { width: 18px; height: 18px; color: #7fc4ff; }
+.contact-detail-text strong { display: block; font-size: .84rem; color: #fff; font-weight: 600; }
+.contact-detail-text span { font-size: .84rem; color: rgba(255,255,255,0.6); }
+
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: .8rem; font-weight: 600; color: rgba(255,255,255,0.65); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; padding: 13px 16px;
+  font-family: var(--ff-body); font-size: .9rem; color: #fff;
+  outline: none; transition: border-color .2s, box-shadow .2s, background .2s;
+  width: 100%;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #7fc4ff;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 0 3px rgba(127,196,255,0.12);
+}
+.form-group select option { background: #001a50; color: #fff; }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit { margin-top: 8px; }
+.contact-form .btn-primary { background: linear-gradient(135deg, #1566c8, #2e86de); }
+
+/* ─── FOOTER ──────────────────────────────── */
+footer {
+  background: var(--navy-dark);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 80px 5vw 40px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px; margin-bottom: 48px;
+}
+@media (max-width: 820px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+.footer-brand img { height: 68px; width: auto; margin-bottom: 18px; }
+.footer-brand p { color: rgba(255,255,255,0.5); font-size: .85rem; line-height: 1.7; max-width: 280px; }
+.footer-col h4 {
+  font-family: var(--ff-head); font-size: .95rem; font-weight: 700;
+  margin-bottom: 16px; color: rgba(255,255,255,0.9);
+  text-transform: uppercase; letter-spacing: .08em; font-size: .78rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { color: rgba(255,255,255,0.5); font-size: .85rem; text-decoration: none; transition: color .2s; }
+.footer-col a:hover { color: #7fc4ff; }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+  border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+  color: rgba(255,255,255,0.4); font-size: .8rem;
+}
+.footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+.footer-bottom a:hover { color: #7fc4ff; }
+
+/* ─── WHATSAPP FLOAT ──────────────────────── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+  text-decoration: none;
+  animation: waPulse 2.5s ease-in-out infinite;
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.1); }
+@keyframes waPulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
+  50%      { box-shadow: 0 6px 40px rgba(37,211,102,0.7); }
+}
+.wa-float svg { width: 30px; height: 30px; }
+
+/* ─── SCROLL REVEAL ───────────────────────── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s, transform .6s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── MOBILE NAV OVERLAY ──────────────────── */
+.mobile-nav {
+  display: none; position: fixed; inset: 0; z-index: 99;
+  background: var(--navy-dark);
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 32px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--ff-head); font-size: 1.6rem; font-weight: 600;
+  color: rgba(255,255,255,0.9); text-decoration: none; transition: color .2s;
+}
+.mobile-nav a:hover { color: #7fc4ff; }
+.mobile-close {
+  position: absolute; top: 20px; right: 24px;
+  background: none; border: none; color: rgba(255,255,255,0.6);
+  font-size: 1.8rem; cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ NAV ══════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="brand_assets/nandani-logo.jpg" alt="Nandani Medical Tourism Logo">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#why" data-en="Home" data-ru="Главная">Home</a></li>
+    <li><a href="#services" data-en="Services" data-ru="Услуги">Services</a></li>
+    <li><a href="#how" data-en="How It Works" data-ru="Как это работает">How It Works</a></li>
+    <li><a href="#testimonials" data-en="Testimonials" data-ru="Отзывы">Testimonials</a></li>
+    <li><a href="#contact" data-en="Contact" data-ru="Контакт">Contact</a></li>
+  </ul>
+
+  <div class="nav-cta-wrap">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
+    <a href="#contact" class="btn-primary" data-en="Free Consultation" data-ru="Консультация">Free Consultation</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose">&#x2715;</button>
+  <a href="#why" onclick="closeMobile()" data-en="Home" data-ru="Главная">Home</a>
+  <a href="#services" onclick="closeMobile()" data-en="Services" data-ru="Услуги">Services</a>
+  <a href="#how" onclick="closeMobile()" data-en="How It Works" data-ru="Как это работает">How It Works</a>
+  <a href="#testimonials" onclick="closeMobile()" data-en="Testimonials" data-ru="Отзывы">Testimonials</a>
+  <a href="#contact" onclick="closeMobile()" data-en="Contact" data-ru="Контакт">Contact</a>
+  <div class="lang-toggle" style="margin-top:16px">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ru">RU</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-mesh"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span data-en="Authorized Partner — Artemis Hospitals India" data-ru="Официальный партнёр — Artemis Hospitals India">Authorized Partner — Artemis Hospitals India</span>
+    </div>
+
+    <h1>
+      <span class="grad-text" data-en="World-Class Healthcare," data-ru="Медицина мирового класса,">World-Class Healthcare,</span><br>
+      <em data-en="Personally Arranged." data-ru="Организованная лично для вас.">Personally Arranged.</em>
+    </h1>
+
+    <p class="hero-sub" data-en="Your trusted medical tourism partner for Artemis Hospitals — India's premier JCI-accredited healthcare destination. We handle everything, so you focus on healing." data-ru="Ваш надёжный партнёр в медицинском туризме для клиник Artemis — ведущего аккредитованного JCI центра здравоохранения Индии. Мы берём на себя всё, чтобы вы сосредоточились на выздоровлении.">
+      Your trusted medical tourism partner for Artemis Hospitals — India's premier JCI-accredited healthcare destination. We handle everything, so you focus on healing.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary" data-en="Book Free Consultation" data-ru="Бесплатная консультация">Book Free Consultation</a>
+      <a href="#services" class="btn-ghost" data-en="Explore Treatments" data-ru="Наши услуги">Explore Treatments</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-stat-card">
+      <div class="num">5000<span style="font-size:1.2rem">+</span></div>
+      <div class="lbl" data-en="Patients Treated" data-ru="Пациентов пролечено">Patients Treated</div>
+    </div>
+    <div class="hero-stat-card">
+      <div class="num">98<span style="font-size:1.2rem">%</span></div>
+      <div class="lbl" data-en="Success Rate" data-ru="Успешных случаев">Success Rate</div>
+    </div>
+    <div class="hero-stat-card">
+      <div class="num">40<span style="font-size:1.2rem">+</span></div>
+      <div class="lbl" data-en="Medical Specialties" data-ru="Специализаций">Medical Specialties</div>
+    </div>
+    <div class="hero-stat-card">
+      <div class="num">24/7</div>
+      <div class="lbl" data-en="Patient Support" data-ru="Поддержка пациентов">Patient Support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ ACCRED BAR ════════ -->
+<div class="accred-bar">
+  <div class="accred-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    <span data-en="JCI Accredited" data-ru="Аккредитация JCI">JCI Accredited</span>
+  </div>
+  <div class="accred-divider"></div>
+  <div class="accred-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span data-en="NABH Accredited" data-ru="Аккредитация NABH">NABH Accredited</span>
+  </div>
+  <div class="accred-divider"></div>
+  <div class="accred-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    <span data-en="500+ Bed Facility" data-ru="Более 500 коек">500+ Bed Facility</span>
+  </div>
+  <div class="accred-divider"></div>
+  <div class="accred-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span data-en="1200+ Specialist Doctors" data-ru="Более 1200 специалистов">1200+ Specialist Doctors</span>
+  </div>
+  <div class="accred-divider"></div>
+  <div class="accred-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span data-en="Gurugram, India" data-ru="Гуругарам, Индия">Gurugram, India</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ STATS ═════════════ -->
+<section class="stats reveal">
+  <div class="section-label" data-en="Our Track Record" data-ru="Наши результаты">Our Track Record</div>
+  <h2 class="section-title" data-en="Numbers That Speak for Themselves" data-ru="Цифры, говорящие сами за себя">Numbers That Speak for Themselves</h2>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num" data-target="5000">5000+</div>
+      <div class="stat-lbl" data-en="International Patients" data-ru="Иностранных пациентов">International Patients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">98%</div>
+      <div class="stat-lbl" data-en="Patient Satisfaction" data-ru="Удовлетворённость пациентов">Patient Satisfaction</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">40+</div>
+      <div class="stat-lbl" data-en="Medical Specialties" data-ru="Медицинских специализаций">Medical Specialties</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-lbl" data-en="Countries Served" data-ru="Обслуживаемых стран">Countries Served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-lbl" data-en="Dedicated Support" data-ru="Круглосуточная поддержка">Dedicated Support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ WHY US ════════════ -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="why-header reveal">
+      <div class="section-label" data-en="Our Promise" data-ru="Наше обещание">Our Promise</div>
+      <h2 class="section-title" data-en="Why Choose Nandani Medical Tourism?" data-ru="Почему Nandani Medical Tourism?">Why Choose Nandani Medical Tourism?</h2>
+      <p class="section-sub" data-en="Four pillars that guide every patient journey — from first contact to full recovery." data-ru="Четыре принципа, которые сопровождают каждого пациента — от первого контакта до полного выздоровления.">Four pillars that guide every patient journey — from first contact to full recovery.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="why-step" data-en="STEP 01 · CARE" data-ru="ШАГ 01 · ЗАБОТА">STEP 01 · CARE</div>
+        <h3 data-en="Dedicated Patient Care" data-ru="Индивидуальная забота о пациенте">Dedicated Patient Care</h3>
+        <p data-en="A personal coordinator is assigned to you from day one. We understand your medical needs, speak your language, and advocate for you at every step." data-ru="С первого дня вам назначается персональный координатор. Мы понимаем ваши медицинские потребности, говорим на вашем языке и защищаем ваши интересы на каждом этапе.">A personal coordinator is assigned to you from day one. We understand your medical needs, speak your language, and advocate for you at every step.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.27 6.27l.85-.85a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="why-step" data-en="STEP 02 · TRAVEL" data-ru="ШАГ 02 · ПЕРЕЛЁТ">STEP 02 · TRAVEL</div>
+        <h3 data-en="Seamless Travel Logistics" data-ru="Полное сопровождение в дороге">Seamless Travel Logistics</h3>
+        <p data-en="We arrange medical visas, airport transfers, premium accommodation near Artemis, and interpreter services — so your journey is smooth from door to door." data-ru="Мы организуем медицинскую визу, трансфер из аэропорта, проживание рядом с Artemis и услуги переводчика — чтобы ваша поездка прошла гладко от начала до конца.">We arrange medical visas, airport transfers, premium accommodation near Artemis, and interpreter services — so your journey is smooth from door to door.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="why-step" data-en="STEP 03 · HEAL" data-ru="ШАГ 03 · ЛЕЧЕНИЕ">STEP 03 · HEAL</div>
+        <h3 data-en="World-Class Treatment" data-ru="Лечение мирового класса">World-Class Treatment</h3>
+        <p data-en="Artemis Hospitals brings together India's finest specialists with cutting-edge technology — delivering outcomes comparable to the best hospitals globally, at a fraction of the cost." data-ru="Artemis Hospitals объединяет лучших специалистов Индии с передовыми технологиями, обеспечивая результаты на уровне ведущих мировых клиник — по доступным ценам.">Artemis Hospitals brings together India's finest specialists with cutting-edge technology — delivering outcomes comparable to the best hospitals globally, at a fraction of the cost.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <div class="why-step" data-en="STEP 04 · RETURN" data-ru="ШАГ 04 · ВОЗВРАЩЕНИЕ">STEP 04 · RETURN</div>
+        <h3 data-en="Safe Return &amp; Follow-Up" data-ru="Безопасное возвращение и наблюдение">Safe Return &amp; Follow-Up</h3>
+        <p data-en="Your care doesn't end at departure. We coordinate telemedicine follow-ups with your Artemis specialists and ensure continuity of care once you're back home." data-ru="Наша забота не заканчивается с вашим отъездом. Мы организуем телемедицинские консультации со специалистами Artemis и обеспечиваем преемственность лечения дома.">Your care doesn't end at departure. We coordinate telemedicine follow-ups with your Artemis specialists and ensure continuity of care once you're back home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SERVICES ══════════ -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div class="section-label" data-en="Specialties" data-ru="Специализации">Specialties</div>
+      <h2 class="section-title" data-en="Medical Treatments We Facilitate" data-ru="Медицинские направления, которые мы организуем">Medical Treatments We Facilitate</h2>
+      <p class="section-sub" data-en="Artemis Hospitals offers over 40 clinical departments with world-renowned experts. Here are our most sought-after specialties for international patients." data-ru="Artemis Hospitals располагает более чем 40 клиническими отделениями с всемирно известными специалистами. Наиболее востребованные направления для иностранных пациентов.">Artemis Hospitals offers over 40 clinical departments with world-renowned experts. Here are our most sought-after specialties for international patients.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 data-en="Cardiology &amp; Cardiac Surgery" data-ru="Кардиология и кардиохирургия">Cardiology &amp; Cardiac Surgery</h3>
+        <p data-en="Bypass surgery, angioplasty, valve replacement, and advanced cardiac interventions." data-ru="Аортокоронарное шунтирование, ангиопластика, замена клапана и сложные кардиологические вмешательства.">Bypass surgery, angioplasty, valve replacement, and advanced cardiac interventions.</p>
+        <a href="#contact" class="service-link" data-en="Learn more →" data-ru="Подробнее →">Learn more →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3 data-en="Oncology" data-ru="Онкология">Oncology</h3>
+        <p data-en="Advanced cancer care including robotic surgery, targeted therapy, immunotherapy, and CyberKnife radiation." data-ru="Передовое лечение онкологии: роботизированная хирургия, таргетная и иммунная терапия, радиохирургия CyberKnife.">Advanced cancer care including robotic surgery, targeted therapy, immunotherapy, and CyberKnife radiation.</p>
+        <a href="#contact" class="service-link" data-en="Learn more →" data-ru="Подробнее →">Learn more →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 data-en="Orthopedics &amp; Joint Replacement" data-ru="Ортопедия и замена суставов">Orthopedics &amp; Joint Replacement</h3>
+        <p data-en="Knee and hip replacement, sports injuries, arthroscopy, and complex reconstructive procedures." data-ru="Замена коленного и тазобедренного суставов, спортивные травмы, артроскопия и реконструктивные операции.">Knee and hip replacement, sports injuries, arthroscopy, and complex reconstructive procedures.</p>
+        <a href="#contact" class="service-link" data-en="Learn more →" data-ru="Подробнее →">Learn more →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/></svg>
+        </div>
+        <h3 data-en="Neurology &amp; Neurosurgery" data-ru="Неврология и нейрохирургия">Neurology &amp; Neurosurgery</h3>
+        <p data-en="Brain tumour surgery, epilepsy treatment, stroke care, deep brain stimulation, and spinal cord surgery." data-ru="Нейрохирургия опухолей мозга, лечение эпилепсии, инсульт, глубокая стимуляция мозга и операции на спинном мозге.">Brain tumour surgery, epilepsy treatment, stroke care, deep brain stimulation, and spinal cord surgery.</p>
+        <a href="#contact" class="service-link" data-en="Learn more →" data-ru="Подробнее →">Learn more →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3 data-en="Organ Transplant" data-ru="Трансплантология">Organ Transplant</h3>
+        <p data-en="Kidney, liver, bone marrow, and heart transplants performed by India's most experienced transplant surgeons." data-ru="Пересадка почки, печени, костного мозга и сердца — опытнейшими трансплантологами Индии.">Kidney, liver, bone marrow, and heart transplants performed by India's most experienced transplant surgeons.</p>
+        <a href="#contact" class="service-link" data-en="Learn more →" data-ru="Подробнее →">Learn more →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h3 data-en="Spine Surgery" data-ru="Хирургия позвоночника">Spine Surgery</h3>
+        <p data-en="Minimally invasive spine surgery, disc replacement, scoliosis correction, and spinal fusion procedures." data-ru="Малоинвазивная хирургия позвоночника, замена диска, коррекция сколиоза и спондилодез.">Minimally invasive spine surgery, disc replacement, scoliosis correction, and spinal fusion procedures.</p>
+        <a href="#contact" class="service-link" data-en="Learn more →" data-ru="Подробнее →">Learn more →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 data-en="Urology &amp; Nephrology" data-ru="Урология и нефрология">Urology &amp; Nephrology</h3>
+        <p data-en="Robotic urological surgeries, kidney stone treatment, prostate cancer, and renal disease management." data-ru="Роботизированные урологические операции, лечение мочекаменной болезни, рака предстательной железы и почечных заболеваний.">Robotic urological surgeries, kidney stone treatment, prostate cancer, and renal disease management.</p>
+        <a href="#contact" class="service-link" data-en="Learn more →" data-ru="Подробнее →">Learn more →</a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 data-en="Gastroenterology" data-ru="Гастроэнтерология">Gastroenterology</h3>
+        <p data-en="GI cancer surgery, liver disease, endoscopy, ERCP, and advanced laparoscopic procedures." data-ru="Онкохирургия ЖКТ, заболевания печени, эндоскопия, ЭРХПГ и лапароскопические вмешательства.">GI cancer surgery, liver disease, endoscopy, ERCP, and advanced laparoscopic procedures.</p>
+        <a href="#contact" class="service-link" data-en="Learn more →" data-ru="Подробнее →">Learn more →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ HOW IT WORKS ══════ -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="how-header reveal">
+      <div class="section-label" data-en="The Process" data-ru="Наш процесс">The Process</div>
+      <h2 class="section-title" data-en="Your Journey in 5 Simple Steps" data-ru="Ваш путь в 5 простых шагов">Your Journey in 5 Simple Steps</h2>
+      <p class="section-sub" data-en="From your first message to your full recovery at home — we are with you every step of the way." data-ru="От первого сообщения до полного выздоровления дома — мы рядом на каждом шагу.">From your first message to your full recovery at home — we are with you every step of the way.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="step-num">1</div>
+        <h3 data-en="Consultation" data-ru="Консультация">Consultation</h3>
+        <p data-en="Share your medical reports and symptoms. Our team reviews and advises on the best treatment path." data-ru="Поделитесь медицинскими документами. Наша команда изучит их и предложит оптимальный план лечения.">Share your medical reports and symptoms. Our team reviews and advises on the best treatment path.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">2</div>
+        <h3 data-en="Treatment Plan" data-ru="План лечения">Treatment Plan</h3>
+        <p data-en="We get a personalised opinion and cost estimate from Artemis specialists within 48 hours." data-ru="В течение 48 часов мы получаем персональное заключение и смету от специалистов Artemis.">We get a personalised opinion and cost estimate from Artemis specialists within 48 hours.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">3</div>
+        <h3 data-en="Travel Arrangements" data-ru="Организация поездки">Travel Arrangements</h3>
+        <p data-en="We assist with medical visa, flights, accommodation near Artemis, and airport pickup." data-ru="Помогаем с медицинской визой, авиабилетами, проживанием рядом с Artemis и трансфером.">We assist with medical visa, flights, accommodation near Artemis, and airport pickup.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">4</div>
+        <h3 data-en="Treatment at Artemis" data-ru="Лечение в Artemis">Treatment at Artemis</h3>
+        <p data-en="Receive world-class care. Your coordinator accompanies you throughout your hospital stay." data-ru="Получите медицинскую помощь мирового класса. Координатор сопровождает вас во время пребывания в больнице.">Receive world-class care. Your coordinator accompanies you throughout your hospital stay.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">5</div>
+        <h3 data-en="Return &amp; Follow-Up" data-ru="Возвращение и наблюдение">Return &amp; Follow-Up</h3>
+        <p data-en="Safe return home with full discharge documents. Telemedicine follow-ups with your doctor." data-ru="Безопасное возвращение домой с полным пакетом документов. Телемедицинские консультации с вашим врачом.">Safe return home with full discharge documents. Telemedicine follow-ups with your doctor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ TESTIMONIALS ══════ -->
+<section class="testimonials" id="testimonials">
+  <div class="test-inner">
+    <div class="test-header reveal">
+      <div class="section-label" data-en="Patient Stories" data-ru="Истории пациентов">Patient Stories</div>
+      <h2 class="section-title" data-en="What Our Patients Say" data-ru="Что говорят наши пациенты">What Our Patients Say</h2>
+      <p class="section-sub" data-en="Real experiences from patients who trusted Nandani Medical Tourism for their healthcare journey." data-ru="Реальные истории пациентов, которые доверили Nandani Medical Tourism своё здоровье.">Real experiences from patients who trusted Nandani Medical Tourism for their healthcare journey.</p>
+    </div>
+    <div class="test-grid">
+
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text" data-en='"Nandani arranged my entire cancer treatment at Artemis with exceptional care. From my visa to every hospital visit, I never felt alone. The doctors are world-class and the costs were a fraction of what I would have paid in Europe."' data-ru='"Nandani организовала всё лечение моего онкологического заболевания в Artemis с исключительным вниманием. От оформления визы до каждого визита в больницу — я никогда не чувствовал себя одиноким. Врачи мирового уровня, а стоимость — в несколько раз ниже, чем в Европе."'>"Nandani arranged my entire cancer treatment at Artemis with exceptional care. From my visa to every hospital visit, I never felt alone. The doctors are world-class and the costs were a fraction of what I would have paid in Europe."</p>
+        <div class="test-author">
+          <div class="test-avatar">А</div>
+          <div>
+            <div class="test-name">Alexander Petrov</div>
+            <div class="test-city" data-en="Moscow, Russia — Oncology Patient" data-ru="Москва, Россия — пациент онкологии">Moscow, Russia — Oncology Patient</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text" data-en='"I had my knee replacement at Artemis and I am walking without pain for the first time in six years. The Nandani team handled absolutely everything — hotel, food, interpreter, doctor visits. I cannot thank them enough."' data-ru='"Мне сделали операцию по замене коленного сустава в Artemis, и впервые за шесть лет я хожу без боли. Команда Nandani взяла на себя абсолютно всё — отель, питание, переводчика, визиты к врачу. Я не могу отблагодарить их достаточно."'>"I had my knee replacement at Artemis and I am walking without pain for the first time in six years. The Nandani team handled absolutely everything — hotel, food, interpreter, doctor visits. I cannot thank them enough."</p>
+        <div class="test-author">
+          <div class="test-avatar">Е</div>
+          <div>
+            <div class="test-name">Elena Kovaleva</div>
+            <div class="test-city" data-en="St. Petersburg, Russia — Orthopedics Patient" data-ru="Санкт-Петербург, Россия — пациентка ортопедии">St. Petersburg, Russia — Orthopedics Patient</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text" data-en='"My father needed urgent cardiac surgery. Nandani got us a specialist appointment at Artemis within 48 hours. The surgery was successful and the entire experience — professional, compassionate, seamless. World class care with a personal touch."' data-ru='"Моему отцу срочно потребовалась операция на сердце. Nandani организовала прием у специалиста в Artemis в течение 48 часов. Операция прошла успешно, и весь опыт был профессиональным, внимательным и безупречным. Уход мирового класса с личным прикосновением."'>"My father needed urgent cardiac surgery. Nandani got us a specialist appointment at Artemis within 48 hours. The surgery was successful and the entire experience — professional, compassionate, seamless. World class care with a personal touch."</p>
+        <div class="test-author">
+          <div class="test-avatar">С</div>
+          <div>
+            <div class="test-name">Sergei Volkov</div>
+            <div class="test-city" data-en="Novosibirsk, Russia — Cardiac Surgery" data-ru="Новосибирск, Россия — кардиохирургия">Novosibirsk, Russia — Cardiac Surgery</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTACT ═══════════ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info reveal">
+      <div class="section-label" data-en="Get In Touch" data-ru="Свяжитесь с нами">Get In Touch</div>
+      <h2 data-en="Start Your Healing Journey Today" data-ru="Начните своё путешествие к выздоровлению сегодня">Start Your Healing Journey Today</h2>
+      <p data-en="Send us your medical reports and our team will respond within 24 hours with a personalised treatment plan, cost estimate, and guidance on your next steps." data-ru="Отправьте нам ваши медицинские документы, и наша команда ответит в течение 24 часов с персональным планом лечения, стоимостью и инструкциями по следующим шагам.">Send us your medical reports and our team will respond within 24 hours with a personalised treatment plan, cost estimate, and guidance on your next steps.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.27 6.27l.85-.85a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong data-en="WhatsApp / Phone" data-ru="WhatsApp / Телефон">WhatsApp / Phone</strong>
+          <span>+91 87083 15097</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong data-en="Email" data-ru="Электронная почта">Email</strong>
+          <span>nandanisingh767@gmail.com</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <strong data-en="Hospital Location" data-ru="Адрес клиники">Hospital Location</strong>
+          <span data-en="Artemis Hospitals, Sector 51, Gurugram, Haryana, India" data-ru="Artemis Hospitals, Сектор 51, Гуругарам, Харьяна, Индия">Artemis Hospitals, Sector 51, Gurugram, Haryana, India</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label data-en="Full Name *" data-ru="Полное имя *">Full Name *</label>
+          <input type="text" required placeholder="Your name" data-ph-en="Your name" data-ph-ru="Ваше имя">
+        </div>
+        <div class="form-group">
+          <label data-en="Phone / WhatsApp *" data-ru="Телефон / WhatsApp *">Phone / WhatsApp *</label>
+          <input type="tel" required placeholder="+7 XXX XXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-en="Email Address" data-ru="Электронная почта">Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label data-en="Medical Specialty Needed *" data-ru="Необходимая специализация *">Medical Specialty Needed *</label>
+        <select required>
+          <option value="" data-en="Select specialty..." data-ru="Выберите специализацию...">Select specialty...</option>
+          <option data-en="Cardiology" data-ru="Кардиология">Cardiology</option>
+          <option data-en="Oncology" data-ru="Онкология">Oncology</option>
+          <option data-en="Orthopedics" data-ru="Ортопедия">Orthopedics</option>
+          <option data-en="Neurology" data-ru="Неврология">Neurology</option>
+          <option data-en="Organ Transplant" data-ru="Трансплантология">Organ Transplant</option>
+          <option data-en="Spine Surgery" data-ru="Хирургия позвоночника">Spine Surgery</option>
+          <option data-en="Urology" data-ru="Урология">Urology</option>
+          <option data-en="Other" data-ru="Другое">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-en="Tell us about your condition *" data-ru="Расскажите о вашем состоянии *">Tell us about your condition *</label>
+        <textarea required placeholder="Please briefly describe your condition and any relevant medical history..." data-ph-en="Please briefly describe your condition and any relevant medical history..." data-ph-ru="Пожалуйста, кратко опишите ваше состояние и соответствующую историю болезни..."></textarea>
+      </div>
+      <div class="form-group">
+        <label data-en="Preferred Language" data-ru="Предпочтительный язык">Preferred Language</label>
+        <select>
+          <option>English</option>
+          <option>Русский</option>
+        </select>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary" style="width:100%; justify-content:center; font-size:1rem; padding:16px" data-en="Send My Request — Free of Charge" data-ru="Отправить запрос — бесплатно">Send My Request — Free of Charge</button>
+      </div>
+      <p style="font-size:.78rem; color:var(--text3); text-align:center; margin-top:8px" data-en="We respond within 24 hours. Your information is 100% confidential." data-ru="Мы отвечаем в течение 24 часов. Ваша информация строго конфиденциальна.">We respond within 24 hours. Your information is 100% confidential.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="brand_assets/nandani-logo.jpg" alt="Nandani Medical Tourism">
+      <p data-en="Authorized representative of Artemis Hospitals India. Your trusted partner for world-class medical care with a personal touch." data-ru="Официальный представитель Artemis Hospitals India. Ваш надёжный партнёр для медицинской помощи мирового класса с личным подходом.">Authorized representative of Artemis Hospitals India. Your trusted partner for world-class medical care with a personal touch.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Services" data-ru="Услуги">Services</h4>
+      <ul>
+        <li><a href="#" data-en="Cardiology" data-ru="Кардиология">Cardiology</a></li>
+        <li><a href="#" data-en="Oncology" data-ru="Онкология">Oncology</a></li>
+        <li><a href="#" data-en="Orthopedics" data-ru="Ортопедия">Orthopedics</a></li>
+        <li><a href="#" data-en="Neurology" data-ru="Неврология">Neurology</a></li>
+        <li><a href="#" data-en="Transplants" data-ru="Трансплантология">Transplants</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Patient Info" data-ru="Пациентам">Patient Info</h4>
+      <ul>
+        <li><a href="#how" data-en="How It Works" data-ru="Как это работает">How It Works</a></li>
+        <li><a href="#" data-en="Medical Visa Guide" data-ru="Медицинская виза">Medical Visa Guide</a></li>
+        <li><a href="#" data-en="Cost Estimates" data-ru="Стоимость лечения">Cost Estimates</a></li>
+        <li><a href="#testimonials" data-en="Patient Stories" data-ru="Истории пациентов">Patient Stories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Contact" data-ru="Контакт">Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/918708315097">WhatsApp</a></li>
+        <li><a href="mailto:nandanisingh767@gmail.com">Email</a></li>
+        <li><a href="#" data-en="Gurugram, India" data-ru="Гуругарам, Индия">Gurugram, India</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-en="© 2026 Nandani Medical Tourism. All rights reserved." data-ru="© 2026 Nandani Medical Tourism. Все права защищены.">© 2026 Nandani Medical Tourism. All rights reserved.</span>
+    <span data-en="Official partner of Artemis Hospitals, Gurugram" data-ru="Официальный партнёр Artemis Hospitals, Гуругарам">Official partner of Artemis Hospitals, Gurugram</span>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/918708315097" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ─── Language Toggle ────────────────────────────────
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      const ph = el.getAttribute('data-ph-' + lang);
+      if (ph) el.placeholder = ph;
+    } else if (el.tagName === 'OPTION') {
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    } else {
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+// ─── Scroll Reveal ──────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger child reveals in grids
+document.querySelectorAll('.why-grid, .services-grid, .test-grid, .how-steps').forEach(grid => {
+  grid.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.08) + 's';
+  });
+});
+
+// ─── Navbar scroll shadow ───────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── Mobile Nav ─────────────────────────────────────
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.add('open');
+});
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
+
+// ─── Form submit ─────────────────────────────────────
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('[type=submit]');
+  btn.textContent = currentLang === 'ru' ? '✓ Запрос отправлен!' : '✓ Request Sent!';
+  btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+  setTimeout(() => {
+    btn.textContent = btn.getAttribute('data-' + currentLang);
+    btn.style.background = '';
+  }, 4000);
+}
+
+// ─── Reduced motion ──────────────────────────────────
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.hero-stat-card').forEach(c => c.style.animation = 'none');
+  document.querySelector('.wa-float').style.animation = 'none';
+}
+</script>
+</body>
+</html>
