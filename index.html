@@ -159,12 +159,12 @@ nav.scrolled { box-shadow: 0 4px 20px rgba(0,26,80,0.35); }
     linear-gradient(90deg, rgba(0,45,114,0.035) 1px, transparent 1px);
   background-size: 56px 56px;
 }
-.hero-content { position: relative; z-index: 1; max-width: 660px; }
+.hero-content { position: relative; z-index: 2; max-width: 660px; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: #eef4ff; border: 1px solid #c5d8f5;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.35);
   border-radius: 4px; padding: 6px 16px;
-  font-size: .78rem; font-weight: 700; color: var(--navy-mid);
+  font-size: .78rem; font-weight: 700; color: #fff;
   margin-bottom: 28px; letter-spacing: .07em; text-transform: uppercase;
 }
 .hero-badge svg { width: 13px; height: 13px; }
@@ -172,13 +172,13 @@ nav.scrolled { box-shadow: 0 4px 20px rgba(0,26,80,0.35); }
   font-family: var(--ff-head);
   font-size: clamp(2.6rem, 5.5vw, 4.4rem);
   font-weight: 700; line-height: 1.13;
-  color: var(--navy);
+  color: #fff;
   margin-bottom: 8px;
 }
-.hero h1 em { font-style: italic; color: var(--blue); }
+.hero h1 em { font-style: italic; color: #7fc4ff; }
 .hero-sub {
   font-size: clamp(.98rem, 1.8vw, 1.12rem);
-  color: var(--text2); margin: 22px 0 38px;
+  color: rgba(255,255,255,0.82); margin: 22px 0 38px;
   max-width: 540px; line-height: 1.75;
 }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -186,7 +186,7 @@ nav.scrolled { box-shadow: 0 4px 20px rgba(0,26,80,0.35); }
 .hero-visual {
   position: absolute; right: 5vw; top: 50%;
   transform: translateY(-50%);
-  width: min(400px, 36vw); z-index: 1;
+  width: min(400px, 36vw); z-index: 2;
   display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
 }
 @media (max-width: 900px) { .hero-visual { display: none; } }
@@ -495,6 +495,71 @@ footer {
 }
 .wa-float svg { width: 30px; height: 30px; }
 
+/* ─── HERO SLIDESHOW ──────────────────────── */
+.hero-slide {
+  position: absolute; inset: 0; z-index: 0;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  animation: heroSlide 49s infinite;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 7s; }
+.hero-slide:nth-child(3) { animation-delay: 14s; }
+.hero-slide:nth-child(4) { animation-delay: 21s; }
+.hero-slide:nth-child(5) { animation-delay: 28s; }
+.hero-slide:nth-child(6) { animation-delay: 35s; }
+.hero-slide:nth-child(7) { animation-delay: 42s; }
+@keyframes heroSlide {
+  0%   { opacity: 0; }
+  4%   { opacity: 1; }
+  14%  { opacity: 1; }
+  18%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+.hero-slide-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    105deg,
+    rgba(0,20,60,0.82) 0%,
+    rgba(0,30,80,0.65) 50%,
+    rgba(0,20,50,0.45) 100%
+  );
+}
+
+/* ─── PHOTO BREAK SECTIONS ────────────────── */
+.photo-break {
+  position: relative; overflow: hidden;
+  height: clamp(280px, 40vw, 480px);
+  display: flex; align-items: flex-end;
+}
+.photo-break img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  transition: transform 6s ease;
+}
+.photo-break:hover img { transform: scale(1.04); }
+.photo-break-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,20,60,0.7) 0%, rgba(0,20,60,0.1) 60%, transparent 100%);
+}
+.photo-break-caption {
+  position: relative; z-index: 1;
+  padding: 32px 5vw;
+  color: #fff;
+  display: flex; align-items: center; gap: 16px;
+}
+.photo-break-caption-bar {
+  width: 4px; height: 48px; background: #fff; border-radius: 2px; flex-shrink: 0;
+}
+.photo-break-caption h3 {
+  font-family: var(--ff-head); font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700; line-height: 1.2; margin-bottom: 4px;
+}
+.photo-break-caption p {
+  font-size: clamp(.8rem, 1.5vw, .95rem);
+  color: rgba(255,255,255,0.78); font-weight: 400;
+}
+
 /* ─── SCROLL REVEAL ───────────────────────── */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s, transform .6s; }
 .reveal.visible { opacity: 1; transform: none; }
@@ -563,7 +628,15 @@ footer {
 
 <!-- ═══════════════════════════════ HERO ══════════════ -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <!-- Slideshow backgrounds -->
+  <div class="hero-slide" style="background-image:url('brand_assets/photo1.jpeg')"></div>
+  <div class="hero-slide" style="background-image:url('brand_assets/photo2.jpeg')"></div>
+  <div class="hero-slide" style="background-image:url('brand_assets/photo3.jpeg')"></div>
+  <div class="hero-slide" style="background-image:url('brand_assets/photo4.jpeg')"></div>
+  <div class="hero-slide" style="background-image:url('brand_assets/photo5.jpeg')"></div>
+  <div class="hero-slide" style="background-image:url('brand_assets/photo6.jpeg')"></div>
+  <div class="hero-slide" style="background-image:url('brand_assets/photo7.jpeg')"></div>
+  <div class="hero-slide-overlay"></div>
   <div class="hero-mesh"></div>
 
   <div class="hero-content">
@@ -663,6 +736,19 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════════════════════════ PHOTO BREAK 1 ════ -->
+<div class="photo-break">
+  <img src="brand_assets/photo2.jpeg" alt="Nandani with patients at Artemis Hospital consultation">
+  <div class="photo-break-overlay"></div>
+  <div class="photo-break-caption">
+    <div class="photo-break-caption-bar"></div>
+    <div>
+      <h3 data-en="Inside Artemis Hospitals, Gurugram" data-ru="Внутри клиники Artemis Hospitals, Гуругарам">Inside Artemis Hospitals, Gurugram</h3>
+      <p data-en="Our team accompanies patients through every specialist consultation" data-ru="Наша команда сопровождает пациентов на каждой консультации со специалистом">Our team accompanies patients through every specialist consultation</p>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════ WHY US ════════════ -->
 <section class="why" id="why">
   <div class="why-inner">
@@ -707,6 +793,19 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════ PHOTO BREAK 2 ════ -->
+<div class="photo-break">
+  <img src="brand_assets/photo6.jpeg" alt="Nandani with young patient and specialist doctor at Artemis">
+  <div class="photo-break-overlay"></div>
+  <div class="photo-break-caption">
+    <div class="photo-break-caption-bar"></div>
+    <div>
+      <h3 data-en="World-Class Care for Every Patient" data-ru="Медицинская помощь мирового класса для каждого пациента">World-Class Care for Every Patient</h3>
+      <p data-en="From children to adults — our specialists treat every case with expertise and compassion" data-ru="От детей до взрослых — наши специалисты ведут каждый случай с профессионализмом и заботой">From children to adults — our specialists treat every case with expertise and compassion</p>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════ SERVICES ══════════ -->
 <section class="services" id="services">
@@ -831,6 +930,19 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════ PHOTO BREAK 3 ════ -->
+<div class="photo-break">
+  <img src="brand_assets/photo5.jpeg" alt="Happy international patients with Nandani team at Artemis">
+  <div class="photo-break-overlay"></div>
+  <div class="photo-break-caption">
+    <div class="photo-break-caption-bar"></div>
+    <div>
+      <h3 data-en="Happy Patients, Every Day" data-ru="Счастливые пациенты каждый день">Happy Patients, Every Day</h3>
+      <p data-en="Real smiles from real patients — international visitors who trusted us with their health journey" data-ru="Настоящие улыбки настоящих пациентов — иностранные гости, доверившие нам своё здоровье">Real smiles from real patients — international visitors who trusted us with their health journey</p>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════ TESTIMONIALS ══════ -->
 <section class="testimonials" id="testimonials">
