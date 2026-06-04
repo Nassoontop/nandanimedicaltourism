@@ -1064,16 +1064,39 @@ document.getElementById('hamburger').addEventListener('click', () => {
 document.getElementById('mobileClose').addEventListener('click', closeMobile);
 function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
 
-// ─── Form submit ─────────────────────────────────────
+// ─── Form submit → WhatsApp ──────────────────────────
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('[type=submit]');
-  btn.textContent = currentLang === 'ru' ? '✓ Запрос отправлен!' : '✓ Request Sent!';
+  const form   = e.target;
+  const inputs = form.querySelectorAll('input, select, textarea');
+  const name      = inputs[0].value.trim();
+  const phone     = inputs[1].value.trim();
+  const email     = inputs[2].value.trim();
+  const specialty = inputs[3].value.trim();
+  const condition = inputs[4].value.trim();
+  const language  = inputs[5].value.trim();
+
+  const msg =
+    `*New Medical Inquiry — Nandani Medical Tourism*\n\n` +
+    `👤 *Name:* ${name}\n` +
+    `📞 *Phone/WhatsApp:* ${phone}\n` +
+    (email ? `📧 *Email:* ${email}\n` : '') +
+    `🏥 *Specialty Needed:* ${specialty}\n` +
+    `🌐 *Preferred Language:* ${language}\n\n` +
+    `📋 *Condition:*\n${condition}`;
+
+  const url = 'https://wa.me/918708315097?text=' + encodeURIComponent(msg);
+
+  const btn = form.querySelector('[type=submit]');
+  btn.textContent = currentLang === 'ru' ? 'Открытие WhatsApp...' : 'Opening WhatsApp...';
   btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+
   setTimeout(() => {
+    window.open(url, '_blank');
     btn.textContent = btn.getAttribute('data-' + currentLang);
     btn.style.background = '';
-  }, 4000);
+    form.reset();
+  }, 400);
 }
 
 // ─── Reduced motion ──────────────────────────────────
