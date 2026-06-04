@@ -554,6 +554,103 @@ footer {
   color: rgba(255,255,255,0.78); font-weight: 400;
 }
 
+/* ─── MOBILE RESPONSIVE ───────────────────── */
+@media (max-width: 768px) {
+
+  html { font-size: 15px; }
+
+  /* Nav */
+  nav { height: 64px; padding: 0 4vw; }
+  .nav-logo img { height: 48px; }
+  .lang-toggle { display: none; } /* shown in mobile menu */
+
+  /* Hero */
+  .hero { padding: 90px 5vw 60px; min-height: 100svh; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .hero-sub { font-size: .95rem; margin: 16px 0 28px; }
+  .hero-badge { font-size: .7rem; padding: 5px 12px; }
+  .btn-primary, .btn-ghost { padding: 13px 24px; font-size: .88rem; }
+
+  /* Accred bar */
+  .accred-bar { gap: 12px 20px; padding: 14px 4vw; justify-content: flex-start; }
+  .accred-item { font-size: .78rem; }
+
+  /* Stats */
+  .stats { padding: 60px 4vw; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+  .stat-item { padding: 32px 16px; }
+  .stat-num { font-size: clamp(2rem, 8vw, 2.6rem); }
+
+  /* Section headers */
+  .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .section-sub { font-size: .92rem; }
+
+  /* Why grid */
+  .why { padding: 60px 4vw; }
+  .why-header { margin-bottom: 40px; }
+  .why-grid { grid-template-columns: 1fr; gap: 16px; }
+  .why-card { padding: 28px 22px; }
+
+  /* Services */
+  .services { padding: 60px 4vw; }
+  .services-header { margin-bottom: 36px; }
+  .services-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .service-card { padding: 22px 18px; }
+  .service-card h3 { font-size: .92rem; }
+  .service-card p { font-size: .78rem; }
+
+  /* Photo breaks */
+  .photo-break { height: clamp(220px, 55vw, 320px); }
+  .photo-break-caption h3 { font-size: 1.1rem; }
+  .photo-break-caption p { font-size: .78rem; }
+  .photo-break-caption { padding: 20px 4vw; }
+
+  /* How it works */
+  .how { padding: 60px 4vw; }
+  .how-header { margin-bottom: 44px; }
+  .how-steps { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
+  .step-num { width: 60px; height: 60px; font-size: 1.2rem; }
+  .how-step h3 { font-size: .95rem; }
+  .how-step p { font-size: .8rem; }
+
+  /* Testimonials */
+  .testimonials { padding: 60px 4vw; }
+  .test-grid { grid-template-columns: 1fr; }
+  .test-card { padding: 32px 24px; }
+  .test-text { font-size: .88rem; }
+
+  /* Contact */
+  .contact { padding: 60px 4vw; }
+  .contact-info h2 { font-size: clamp(1.6rem, 6vw, 2rem); }
+
+  /* Footer */
+  footer { padding: 50px 4vw 28px; }
+  .footer-top { gap: 28px; }
+  .footer-brand img { height: 52px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+
+  /* WhatsApp button */
+  .wa-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+  .wa-float svg { width: 26px; height: 26px; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+
+  .hero { padding: 80px 5vw 50px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost { width: 100%; justify-content: center; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .how-steps { grid-template-columns: 1fr; gap: 28px; }
+
+  .accred-bar { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+  .contact-form .form-row { grid-template-columns: 1fr; }
+}
+
 /* ─── SCROLL REVEAL ───────────────────────── */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s, transform .6s; }
 .reveal.visible { opacity: 1; transform: none; }
